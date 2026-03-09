@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме - Федин Артемий</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7928CA;
+            --bg-color: #f5f5f5;
+            --text-dark: #222;
+            --text-gray: #555;
+            --left-col-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            /* Запрет на выделение текста, чтобы усложнить копирование */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Разрешаем выделение текста только для важных контактных данных, если нужно (опционально) */
+        .contacts {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 950px;
+            background: #fff;
+            display: flex;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 65%;
+            height: 15px;
+            background: var(--primary-color);
+            z-index: 10;
+        }
+        
+        .resume-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 65%;
+            height: 15px;
+            background: var(--primary-color);
+            z-index: 10;
+        }
+
+        /* ЛЕВАЯ КОЛОНКА */
+        .left-column {
+            width: 35%;
+            background-color: var(--left-col-bg);
+            padding: 40px 30px;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo-container {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            padding: 5px;
+            margin-bottom: 25px;
+            background-color: transparent;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-title-outline {
+            border: 1px solid var(--text-dark);
+            border-radius: 20px;
+            padding: 5px 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .contacts {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .contacts p {
+            margin-bottom: 10px;
+        }
+
+        /* Стили для кликабельных контактов */
+        .contact-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .contact-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .portfolio-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 10px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(121, 40, 202, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-btn:hover {
+            background-color: #5a1b9e;
+            transform: translateY(-2px);
+        }
+
+        .portfolio-btn span {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        /* БЛОК QR КОДА */
+        .qr-container {
+            width: 120px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .qr-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            /* Запрет на перетаскивание картинки */
+            pointer-events: none;
+        }
+
+        .skills-section, .hobbies-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .skills-title {
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skills-title span { color: var(--primary-color); }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: right;
+            color: var(--text-dark);
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+            width: 0;
+            position: relative;
+            transition: width 1s ease-in-out;
+        }
+
+        .skill-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -3px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .hobby-item {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: left;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            padding-left: 15px;
+        }
+
+        .hobby-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        /* ПРАВАЯ КОЛОНКА */
+        .right-column {
+            width: 65%;
+            padding: 40px 40px; 
+        }
+
+        .header-name {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-pill {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--text-dark);
+            border-radius: 20px;
+            padding: 4px 15px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .section-pill .icon {
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .about-text {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-dark);
+            font-weight: 500;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .education-block {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .edu-details {
+            width: 75%;
+        }
+
+        .edu-dates {
+            width: 25%;
+            text-align: right;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .edu-title {
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .edu-subtitle {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .edu-desc {
+            font-size: 11px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        /* ПЛАВАЮЩАЯ КНОПКА ПЕЧАТИ */
+        .floating-print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #222;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .floating-print-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
+        @media (max-width: 768px) {
+            .resume-container { flex-direction: column; }
+            .left-column, .right-column { width: 100%; border-right: none; }
+            .resume-container::before, .resume-container::after { width: 100%; }
+            .header-name { font-size: 32px; }
+            .education-block { flex-direction: column; }
+            .edu-details, .edu-dates { width: 100%; text-align: left; }
+            .edu-dates { margin-top: 5px; }
+            .skill-name { text-align: left; }
+            .floating-print-btn { bottom: 15px; right: 15px; padding: 12px 20px; }
+        }
+
+        /* ЖЕСТКИЕ ПРАВИЛА ДЛЯ ПЕЧАТИ А4 */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body, html { background: #fff; margin: 0 !important; padding: 0 !important; width: 210mm; height: 297mm; }
+            .resume-container { width: 210mm !important; height: 297mm !important; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; display: flex !important; flex-direction: row !important; page-break-inside: avoid; }
+            .left-column { width: 35% !important; height: 100% !important; border-right: 1px solid #ddd !important; }
+            .right-column { width: 65% !important; height: 100% !important; }
+            .floating-print-btn { display: none !important; }
+            .contact-link::after { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; user-select: auto !important; -webkit-user-select: auto !important;}
+            .resume-container::before, .resume-container::after { width: 65% !important; }
+            .skill-bar-fill { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="floating-print-btn" onclick="window.print()">
+    🖨️ Печать А4
+</button>
+
+<div class="resume-container">
+    <!-- Левая колонка -->
+    <aside class="left-column">
+        
+        <div class="photo-container">
+            <img src="photo.jpg" alt="Федин Артемий" style="pointer-events: none;">
+        </div>
+
+        <div class="section-title-outline">КОНТАКТЫ</div>
+        
+        <div class="contacts">
+            <p><a href="tel:+79124053810" class="contact-link">+7-912-405-38-10</a></p>
+            <p><a href="https://t.me/Fedin_PM" target="_blank" class="contact-link">tg: @Fedin_PM</a></p>
+            <p><a href="mailto:arnikfed@gmail.com" class="contact-link">arnikfed@gmail.com</a></p>
+        </div>
+
+         <!-- БЛОК С QR КОДОМ -->
+        <div class="qr-container">
+            <img src="qr.png" alt="Telegram QR Code">
+        </div>
+
+
+        <a href="https://disk.yandex.ru/d/Xok4qCDuIGgj0A" target="_blank" class="portfolio-btn">
+            <span>📁</span> Смотреть портфолио
+        </a>
+
+
+        <div class="skills-section">
+            <div class="skills-title">SKILLS <span>⚙</span></div>
+            <div class="skill-item">
+                <div class="skill-name">Microsoft Word</div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">C++ программирование</div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Microsoft Powerpoint</div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Adobe Photoshop</div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="60%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Microsoft Excel</div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
+            </div>
+        </div>
+
+        <div class="hobbies-section">
+            <div class="skills-title">ХОББИ</div>
+            <div class="hobby-item">ПРОГРАММИРОВАНИЕ</div>
+            <div class="hobby-item">РЫБАЛКА</div>
+            <div class="hobby-item">ЧТЕНИЕ</div>
+            <div class="hobby-item">ЯДЕРНАЯ АСТРОФИЗИКА</div>
+        </div>
+    </aside>
+
+    <!-- Правая колонка -->
+    <main class="right-column">
+        <h1 class="header-name">ФЕДИН АРТЕМИЙ</h1>
+        <h2 class="header-title">РУКОВОДИТЕЛЬ ПРОЕКТОВ</h2>
+        
+        <div class="section-pill">
+            <span class="icon">👤</span> ПРО МЕНЯ
+        </div>
+        
+        <div class="about-text">
+            Я - руководитель проектов с практическим опытом управления IT-разработкой. Обладаю развитыми лидерскими качествами, высокой организованностью и умением выстраивать эффективную коммуникацию в команде. За моими плечами успешный опыт работы в IT-компании «Цифровой Элемент», где я занимался координацией разработчиков, планированием и контролем сроков выполнения задач. В настоящее время я оканчиваю выпускной (третий) курс Южно-Уральского государственного колледжа по специальности "Информационные системы и программирование". Привык брать на себя ответственность за итоговый результат, что также подтверждается моим многолетним опытом в роли старосты группы и капитана команд на профильных олимпиадах.
+        </div>
+
+        <div class="section-pill">
+            <span class="icon">💼</span> ОПЫТ РАБОТЫ
+        </div>
+
+        <div class="education-block">
+            <div class="edu-details">
+                <div class="edu-title">IT-КОМПАНИЯ «ЦИФРОВОЙ ЭЛЕМЕНТ»</div>
+                <div class="edu-subtitle">РУКОВОДИТЕЛЬ ПРОЕКТОВ</div>
+                <div class="edu-desc">Координация IT-проектов, управление командой разработки, контроль соблюдения сроков (дедлайнов) и качества выполнения задач.</div>
+            </div>
+            <div class="edu-dates">Апр 2024 - Июл 2025</div>
+        </div>
+
+        <div class="section-pill">
+            <span class="icon">🎓</span> ОБРАЗОВАНИЕ
+        </div>
+
+        <div class="education-block">
+            <div class="edu-details">
+                <div class="edu-title">ЮЖНО-УРАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ КОЛЛЕДЖ</div>
+                <div class="edu-subtitle">ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ПРОГРАММИРОВАНИЕ</div>
+                <div class="edu-desc">Квалификация - программист</div>
+            </div>
+            <div class="edu-dates">2023 - н.в.</div>
+        </div>
+
+        <div class="education-block">
+            <div class="edu-details">
+                <div class="edu-title">ЮЖНО-УРАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ МЕДИЦИНСКИЙ УНИВЕРСИТЕТ</div>
+                <div class="edu-subtitle">ЛЕЧЕБНОЕ ДЕЛО</div>
+                <div class="edu-desc">Неоконченное высшее образование</div>
+            </div>
+            <div class="edu-dates">2017-2023</div>
+        </div>
+
+        <div class="education-block">
+            <div class="edu-details">
+                <div class="edu-title">КУРСЫ PROJECT MANAGER</div>
+                <div class="edu-subtitle" style="color: #555;">ЦИФРОВОЙ ЭЛЕМЕНТ</div>
+            </div>
+            <div class="edu-dates">2024</div>
+        </div>
+
+    </main>
+</div>
+
+<!-- БЛОК ЗАЩИТЫ И АНИМАЦИИ -->
+<script>
+    // 1. Анимация шкал навыков
+    function setSkillWidths() {
+        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-width');
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(setSkillWidths, 300);
+    });
+
+    window.addEventListener('beforeprint', () => {
+        setSkillWidths();
+    });
+
+    // -------------------------------------------------------------
+    // 2. ЗАЩИТА ОТ DEVTOOLS И КОПИРОВАНИЯ
+    // -------------------------------------------------------------
+
+    // Блокировка правой кнопки мыши (контекстного меню)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Блокировка горячих клавиш
+    document.addEventListener('keydown', function(e) {
+        // Запрет F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Запрет Ctrl+Shift+I / Cmd+Option+I (Открытие DevTools)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'И' || e.key === 'и')) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Запрет Ctrl+Shift+J (Консоль)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.key === 'О' || e.key === 'о')) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Запрет Ctrl+Shift+C (Инспектор элементов)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.key === 'С' || e.key === 'с')) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Запрет Ctrl+U (Просмотр исходного кода)
+        if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'Г' || e.key === 'г')) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Запрет Ctrl+S (Сохранение страницы)
+        if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.key === 'Ы' || e.key === 'ы')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Ловушка "Debugger Trap". Замораживает браузер, если DevTools всё же ухитрились открыть.
+    setInterval(function() {
+        (function() {
+            return false;
+        }['constructor']('debugger')());
+    }, 50);
+</script>
+
+</body>
+</html>
