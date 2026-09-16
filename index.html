@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме - Федин Артемий</title>
+    <title>Артемий Федин — руководитель IT-проектов</title>
+    <meta name="description" content="Артемий Федин — руководитель IT-проектов. Управление веб-разработкой, командами и требованиями. Челябинск, удалённая работа. Опыт в IT и медицине.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,8 +20,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            user-select: none;
-            -webkit-user-select: none;
         }
 
         .contacts, .about-text, .edu-desc {
@@ -101,6 +100,8 @@
 
         .contacts { text-align: center; font-size: 12px; font-weight: 600; margin-bottom: 20px; width: 100%; }
         .contacts p { margin-bottom: 8px; }
+        .location { color: var(--text-gray); font-size: 11px; line-height: 1.5; }
+        a:focus-visible, button:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 4px; }
 
         .contact-link { color: var(--text-dark); text-decoration: none; position: relative; transition: color 0.3s ease; }
         .contact-link:hover { color: var(--primary-color); }
@@ -121,8 +122,9 @@
         .skill-item { margin-bottom: 12px; }
         .skill-name { font-size: 10px; font-weight: 700; margin-bottom: 4px; text-align: right; color: var(--text-dark); }
         .skill-bar-bg { width: 100%; height: 4px; background: #ddd; border-radius: 2px; position: relative; }
-        .skill-bar-fill { height: 100%; background: var(--primary-color); border-radius: 2px; width: 0; position: relative; transition: width 1s ease-in-out; }
+        .skill-bar-fill { height: 100%; background: var(--primary-color); border-radius: 2px; width: 80%; position: relative; }
         .skill-bar-fill::after { content: ''; position: absolute; right: -4px; top: -3px; width: 10px; height: 10px; background: var(--primary-color); border-radius: 50%; }
+        .skills-note { font-size: 10px; line-height: 1.5; color: var(--text-gray); text-align: center; margin: -5px 0 15px; }
 
         .hobby-item { font-size: 10px; font-weight: 700; text-transform: uppercase; text-align: left; margin-bottom: 8px; display: flex; justify-content: flex-start; align-items: center; gap: 10px; padding-left: 15px; }
         .hobby-item::before { content: ''; width: 6px; height: 6px; background: var(--primary-color); border-radius: 50%; display: block; flex-shrink: 0; }
@@ -135,7 +137,7 @@
         .section-pill { display: inline-flex; align-items: center; border: 1px solid var(--text-dark); border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 700; margin-bottom: 8px; margin-top: 10px; }
         .section-pill .icon { color: var(--primary-color); margin-right: 8px; font-size: 14px; }
 
-        .about-text { font-size: 11.5px; line-height: 1.5; color: var(--text-dark); font-weight: 500; text-align: justify; margin-bottom: 20px; }
+        .about-text { font-size: 11.5px; line-height: 1.5; color: var(--text-dark); font-weight: 500; margin-bottom: 15px; }
 
         .education-block { margin-bottom: 15px; display: flex; justify-content: space-between; }
         .experience-block { flex-direction: column; margin-bottom: 15px; } /* Спец. класс для опыта работы */
@@ -149,11 +151,18 @@
         
         .edu-desc ul { padding-left: 15px; margin-top: 5px; }
         .edu-desc li { margin-bottom: 4px; }
+        .experience-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+        .experience-heading .edu-dates { flex-shrink: 0; }
+        .education-block { gap: 12px; }
+        .education-block, .skill-item { break-inside: avoid; }
+        .diploma-link { display: inline-block; margin-top: 6px; color: var(--primary-color); font-size: 11px; font-weight: 700; text-underline-offset: 3px; }
+        .education-note { margin-top: 4px; }
 
         .floating-print-btn { position: fixed; bottom: 30px; right: 30px; background-color: #222; color: #fff; border: none; padding: 15px 25px; border-radius: 30px; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s ease; z-index: 1000; display: flex; align-items: center; gap: 10px; }
         .floating-print-btn:hover { background-color: var(--primary-color); transform: translateY(-3px); }
 
         @media (max-width: 768px) {
+            body { flex-direction: column; align-items: center; padding: 20px 12px; }
             .resume-container { flex-direction: column; }
             .left-column, .right-column { width: 100%; border-right: none; }
             .resume-container::before, .resume-container::after { width: 100%; }
@@ -161,15 +170,32 @@
             .education-block { flex-direction: column; }
             .edu-details, .edu-dates { width: 100%; text-align: left; }
             .edu-dates { margin-top: 5px; }
-            .floating-print-btn { bottom: 15px; right: 15px; padding: 12px 20px; }
+            .floating-print-btn { position: static; align-self: flex-end; margin-bottom: 16px; padding: 12px 20px; }
+            .right-column { padding: 30px 24px 80px; }
+            .experience-heading { flex-direction: column; gap: 3px; }
+            .header-name { overflow-wrap: anywhere; }
+            .education-block { gap: 3px; }
         }
 
         @media print {
             @page { size: A4; margin: 0; }
-            body, html { background: #fff; margin: 0 !important; padding: 0 !important; width: 210mm; height: 297mm; }
-            .resume-container { width: 210mm !important; height: 297mm !important; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; display: flex !important; flex-direction: row !important; page-break-inside: avoid; }
-            .left-column { width: 35% !important; height: 100% !important; border-right: 1px solid #ddd !important; }
-            .right-column { width: 65% !important; height: 100% !important; }
+            body, html { background: #fff; margin: 0 !important; padding: 0 !important; width: 210mm; }
+            .resume-container { width: 210mm !important; min-height: 297mm; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; display: flex !important; flex-direction: row !important; overflow: visible; }
+            .left-column { width: 35% !important; padding: 30px 24px; border-right: 1px solid #ddd !important; }
+            .photo-container { width: 120px; height: 120px; }
+            .right-column { width: 65% !important; padding: 28px 26px; }
+            .header-name { font-size: 32px; }
+            .header-title { margin-bottom: 12px; font-size: 13px; }
+            .about-text { font-size: 10.5px; margin-bottom: 10px; }
+            .edu-desc { font-size: 10px; }
+            .edu-title { font-size: 11px; }
+            .edu-subtitle, .edu-dates, .diploma-link { font-size: 10px; }
+            .education-block { flex-direction: row; gap: 10px; margin-bottom: 10px; }
+            .experience-block, .experience-heading { flex-direction: column; }
+            .experience-heading { gap: 3px; }
+            .experience-heading .edu-dates { width: 100%; text-align: left; }
+            .edu-details { width: 75%; }
+            .edu-dates { width: 25%; text-align: right; }
             .floating-print-btn, .contact-link::after { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; user-select: auto !important; -webkit-user-select: auto !important;}
             .resume-container::before, .resume-container::after { width: 65% !important; }
@@ -191,15 +217,16 @@
         <div class="section-title-outline">КОНТАКТЫ</div>
         <div class="contacts">
             <p><a href="tel:+79124053810" class="contact-link">+7-912-405-38-10</a></p>
-            <p><a href="https://t.me/Fedin_PM" target="_blank" class="contact-link">tg: @Fedin_PM</a></p>
+            <p><a href="https://t.me/Fedin_PM" target="_blank" rel="noopener noreferrer" class="contact-link">tg: @Fedin_PM</a></p>
             <p><a href="mailto:arnikfed@gmail.com" class="contact-link">arnikfed@gmail.com</a></p>
+            <p class="location">Челябинск · офис / гибрид<br>Другие города · удалённо</p>
         </div>
 
         <div class="qr-container">
             <img src="qr.png" alt="Telegram QR Code">
         </div>
 
-        <a href="https://disk.yandex.ru" target="_blank" class="portfolio-btn">
+        <a href="https://disk.yandex.ru/d/Xok4qCDuIGgj0A" target="_blank" rel="noopener noreferrer" class="portfolio-btn">
             <span>📁</span> Смотреть портфолио
         </a>
 
@@ -207,25 +234,42 @@
 
         <div class="skills-section">
             <div class="skills-title">SKILLS <span>⚙</span></div>
+            <p class="skills-note">Инструменты и навыки, которые применял в работе. Без процентных оценок.</p>
             <div class="skill-item">
-                <div class="skill-name">Microsoft Word</div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                <div class="skill-name">Битрикс24</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">C++ программирование</div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70%"></div></div>
+                <div class="skill-name">Taiga</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Microsoft Powerpoint</div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                <div class="skill-name">Confluence / Google Docs</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Adobe Photoshop</div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="60%"></div></div>
+                <div class="skill-name">Сбор и согласование требований</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Microsoft Excel</div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
+                <div class="skill-name">Планирование и декомпозиция</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Приоритизация и управление рисками</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Координация команды разработки</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Коммуникация с заказчиком</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Microsoft Excel / PowerPoint</div>
+                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
             </div>
         </div>
 
@@ -234,25 +278,24 @@
             <div class="hobby-item">ПРОГРАММИРОВАНИЕ</div>
             <div class="hobby-item">РЫБАЛКА</div>
             <div class="hobby-item">ЧТЕНИЕ</div>
-            <div class="hobby-item">ЯДЕРНАЯ АСТРОФИЗИКА</div>
         </div>
     </aside>
 
     <!-- Правая колонка -->
     <main class="right-column">
         <h1 class="header-name">ФЕДИН АРТЕМИЙ</h1>
-        <h2 class="header-title">РУКОВОДИТЕЛЬ ПРОЕКТОВ</h2>
+        <h2 class="header-title">РУКОВОДИТЕЛЬ IT-ПРОЕКТОВ</h2>
         
         <div class="section-pill"><span class="icon">👤</span> ПРО МЕНЯ</div>
         <div class="about-text">
-            Я - руководитель проектов с практическим опытом управления IT-разработкой. Обладаю развитыми лидерскими качествами, высокой организованностью и умением выстраивать эффективную коммуникацию. В настоящее время оканчиваю выпускной (третий) курс Южно-Уральского государственного колледжа по специальности "Информационные системы и программирование". Привык брать ответственность за итоговый результат, что подтверждается опытом ведения коммерческих web-проектов, а также многолетним опытом в роли старосты группы и капитана команд на профильных олимпиадах.
+            Руководитель проектов с опытом управления коммерческой веб-разработкой: от согласования требований до контроля сроков и качества. В 2026 году окончил ЮУГК, квалификация — программист. Продолжаю обучение заочно в ЮУТУ и рассматриваю полную занятость в IT. Есть опыт работы медбратом и использования медицинских информационных систем; интересны в том числе проекты на стыке IT и медицины.
         </div>
 
         <div class="section-pill"><span class="icon">💼</span> ОПЫТ РАБОТЫ</div>
 
         <!-- Развернутый блок опыта -->
         <div class="education-block experience-block">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div class="experience-heading">
                 <div>
                     <div class="edu-title">IT-КОМПАНИЯ «ЦИФРОВОЙ ЭЛЕМЕНТ»</div>
                     <div class="edu-subtitle">РУКОВОДИТЕЛЬ ПРОЕКТОВ</div>
@@ -263,7 +306,7 @@
                 <p><b>Обязанности:</b> Управление кросс-функциональной командой (8-10 человек: backend, frontend, QA, UX/UI). Оценка стоимости и рисков, контроль сроков и качества, плотная коммуникация с заказчиками. Работа по смешанной методологии (Agile/Kanban) в Bitrix24, Taiga, Confluence.</p>
                 <p style="margin-top: 6px;"><b>Ключевые проекты:</b></p>
                 <ul>
-                    <li><b>Экосистема национального института поддержки экспорта:</b> Техподдержка и развитие высоконагруженных систем со строгими стандартами отказоустойчивости и безопасности. Управление бэклогом и приоритизация задач (SLA). Успешный запуск корпоративного портала на 1С-Битрикс со сложными интеграциями (ЭДО, 1С, MDM, СКУД).</li>
+                    <li><b>Корпоративные веб-сервисы:</b> Модернизация сайта, сопровождение и развитие систем. Управление бэклогом и приоритизация задач с учётом SLA. Запуск корпоративного портала на 1С-Битрикс с интеграциями. Названия заказчиков не раскрываю в связи с NDA.</li>
                     <li><b>B2B-платформа зарубежного нефтегазового предприятия:</b> Курирование этапа развития проекта. Выстроил сложную систему коммуникации с иностранным заказчиком, обеспечив своевременный релиз доработок (автоматизация оптовых заказов, интеграция с 1С).</li>
                     <li><b>Web-комплекс для завода промышленного оборудования:</b> Успешное управление проектом (корпоративный сайт + B2B платформа) на критически важном этапе бизнес-аналитики и проектирования UI/UX дизайна.</li>
                 </ul>
@@ -274,11 +317,22 @@
 
         <div class="education-block" style="margin-bottom: 10px;">
             <div class="edu-details">
+                <div class="edu-title">ЮЖНО-УРАЛЬСКИЙ ТЕХНОЛОГИЧЕСКИЙ УНИВЕРСИТЕТ (ЮУТУ)</div>
+                <div class="edu-subtitle" style="color: #555;">РАЗРАБОТКА ПРОГРАММНЫХ РЕШЕНИЙ ДЛЯ БИЗНЕСА</div>
+                <div class="edu-desc">Высшее образование, заочная форма. Обучаюсь.</div>
+            </div>
+            <div class="edu-dates">2026 — н.в.</div>
+        </div>
+
+        <div class="education-block" style="margin-bottom: 10px;">
+            <div class="edu-details">
                 <div class="edu-title">ЮЖНО-УРАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ КОЛЛЕДЖ</div>
                 <div class="edu-subtitle" style="color: #555;">ИНФОРМАЦИОННЫЕ СИСТЕМЫ И ПРОГРАММИРОВАНИЕ</div>
-                <div class="edu-desc">Квалификация - программист</div>
+                <div class="edu-desc">Среднее профессиональное образование завершено. Квалификация — программист.</div>
+                <div class="edu-desc education-note">Диплом получен 30 июня 2026 года.</div>
+                <a class="diploma-link" href="assets/diploma-public.pdf" target="_blank" rel="noopener noreferrer">Диплом ЮУГК · PDF, публичная копия</a>
             </div>
-            <div class="edu-dates">2023 - н.в.</div>
+            <div class="edu-dates">2023 — 2026</div>
         </div>
 
         <div class="education-block" style="margin-bottom: 10px;">
@@ -301,21 +355,5 @@
     </main>
 </div>
 
-<script>
-    function setSkillWidths() { document.querySelectorAll('.skill-bar-fill').forEach(bar => { bar.style.width = bar.getAttribute('data-width'); }); }
-    document.addEventListener("DOMContentLoaded", function() { setTimeout(setSkillWidths, 300); });
-    window.addEventListener('beforeprint', () => { setSkillWidths(); });
-
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-        if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'И' || e.key === 'и')) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.key === 'О' || e.key === 'о')) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.key === 'С' || e.key === 'с')) { e.preventDefault(); return false; }
-        if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'Г' || e.key === 'г')) { e.preventDefault(); return false; }
-        if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.key === 'Ы' || e.key === 'ы')) { e.preventDefault(); return false; }
-    });
-    setInterval(() => { (function() { return false; }['constructor']('debugger')()); }, 50);
-</script>
 </body>
 </html>
