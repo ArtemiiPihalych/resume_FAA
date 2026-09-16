@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Артемий Федин — руководитель IT-проектов</title>
-    <meta name="description" content="Артемий Федин — руководитель IT-проектов. Управление веб-разработкой, командами и требованиями. Челябинск, удалённая работа. Опыт в IT и медицине.">
+    <meta name="description" content="Артемий Федин — руководитель IT-проектов. Управление веб-разработкой, командами и требованиями. Выпускник ЮУГК, обучаюсь заочно в ЮУТУ. Челябинск, удалённая работа.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -122,9 +122,8 @@
         .skill-item { margin-bottom: 12px; }
         .skill-name { font-size: 10px; font-weight: 700; margin-bottom: 4px; text-align: right; color: var(--text-dark); }
         .skill-bar-bg { width: 100%; height: 4px; background: #ddd; border-radius: 2px; position: relative; }
-        .skill-bar-fill { height: 100%; background: var(--primary-color); border-radius: 2px; width: 80%; position: relative; }
+        .skill-bar-fill { height: 100%; background: var(--primary-color); border-radius: 2px; position: relative; }
         .skill-bar-fill::after { content: ''; position: absolute; right: -4px; top: -3px; width: 10px; height: 10px; background: var(--primary-color); border-radius: 50%; }
-        .skills-note { font-size: 10px; line-height: 1.5; color: var(--text-gray); text-align: center; margin: -5px 0 15px; }
 
         .hobby-item { font-size: 10px; font-weight: 700; text-transform: uppercase; text-align: left; margin-bottom: 8px; display: flex; justify-content: flex-start; align-items: center; gap: 10px; padding-left: 15px; }
         .hobby-item::before { content: ''; width: 6px; height: 6px; background: var(--primary-color); border-radius: 50%; display: block; flex-shrink: 0; }
@@ -234,42 +233,29 @@
 
         <div class="skills-section">
             <div class="skills-title">SKILLS <span>⚙</span></div>
-            <p class="skills-note">Инструменты и навыки, которые применял в работе. Без процентных оценок.</p>
             <div class="skill-item">
                 <div class="skill-name">Битрикс24</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-bar-bg" role="meter" aria-label="Битрикс24" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><div class="skill-bar-fill" style="width: 85%;"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Taiga</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-name">Confluence</div>
+                <div class="skill-bar-bg" role="meter" aria-label="Confluence" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><div class="skill-bar-fill" style="width: 70%;"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Confluence / Google Docs</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-name">Google Docs</div>
+                <div class="skill-bar-bg" role="meter" aria-label="Google Docs" aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"><div class="skill-bar-fill" style="width: 95%;"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Сбор и согласование требований</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-name">Microsoft Excel</div>
+                <div class="skill-bar-bg" role="meter" aria-label="Microsoft Excel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><div class="skill-bar-fill" style="width: 85%;"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Планирование и декомпозиция</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-name">C++</div>
+                <div class="skill-bar-bg" role="meter" aria-label="C++" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"><div class="skill-bar-fill" style="width: 40%;"></div></div>
             </div>
             <div class="skill-item">
-                <div class="skill-name">Приоритизация и управление рисками</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">Координация команды разработки</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">Коммуникация с заказчиком</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-name">Microsoft Excel / PowerPoint</div>
-                <div class="skill-bar-bg" aria-hidden="true"><div class="skill-bar-fill"></div></div>
+                <div class="skill-name">PowerPoint</div>
+                <div class="skill-bar-bg" role="meter" aria-label="PowerPoint" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"><div class="skill-bar-fill" style="width: 90%;"></div></div>
             </div>
         </div>
 
@@ -288,7 +274,7 @@
         
         <div class="section-pill"><span class="icon">👤</span> ПРО МЕНЯ</div>
         <div class="about-text">
-            Руководитель проектов с опытом управления коммерческой веб-разработкой: от согласования требований до контроля сроков и качества. В 2026 году окончил ЮУГК, квалификация — программист. Продолжаю обучение заочно в ЮУТУ и рассматриваю полную занятость в IT. Есть опыт работы медбратом и использования медицинских информационных систем; интересны в том числе проекты на стыке IT и медицины.
+            Я — руководитель проектов с практическим опытом управления IT-разработкой. Обладаю развитыми лидерскими качествами, высокой организованностью и умением выстраивать эффективную коммуникацию. В 2026 году окончил Южно-Уральский государственный колледж по специальности «Информационные системы и программирование». Сейчас обучаюсь на заочном отделении Южно-Уральского технологического университета (ЮУТУ) по программе «Разработка программных решений для бизнеса». Привык брать ответственность за итоговый результат, что подтверждается опытом ведения коммерческих веб-проектов, а также многолетним опытом в роли старосты группы и капитана команд на профильных олимпиадах.
         </div>
 
         <div class="section-pill"><span class="icon">💼</span> ОПЫТ РАБОТЫ</div>
