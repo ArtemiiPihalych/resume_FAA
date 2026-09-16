@@ -20,11 +20,8 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-        }
-
-        .contacts, .about-text, .edu-desc {
-            user-select: text;
-            -webkit-user-select: text;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         body {
@@ -341,5 +338,14 @@
     </main>
 </div>
 
+<script>
+    // Interface restrictions only: a public page's source remains accessible.
+    document.addEventListener('selectstart', event => event.preventDefault());
+    document.addEventListener('keydown', event => {
+        if (event.key === 'F12') {
+            event.preventDefault();
+        }
+    }, true);
+</script>
 </body>
 </html>
